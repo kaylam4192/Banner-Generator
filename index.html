@@ -6,14 +6,28 @@
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <script>
         // custom JS/jquery
-        $(function(){
+        $(function(){ 
+          $("button").click(function(){
+            var quote =  $("#quote").val();
+            var color = $("input[name=color]:checked").val();
+            console.log(color);
+            $("h1").val(quote).html(quote).css("color",color);
+           
+            
+          });
             
             
         });
     </script>
   </head>
   <body>
-      <h1>hahahahaha</h1>
+    Your Quote: <input type="text" id="quote"><br>
+    <input type="radio" name="color" value="blue" checked> Blue<br>
+  <input type="radio" name="color" value="red"> Red<br>
+  <input type="radio" name="color" value="Green"> Green<br>
+  <button type="button">Submit</button>
+  
+      <h1></h1>
   
   </body>
 </html>
