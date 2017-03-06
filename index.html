@@ -1,33 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Jquery Template</title>
-    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-    <script>
-        // custom JS/jquery
-        $(function(){ 
-          $("button").click(function(){
-            var quote =  $("#quote").val();
-            var color = $("input[name=color]:checked").val();
-            console.log(color);
-            $("h1").val(quote).html(quote).css("color",color);
-           
-            
-          });
-            
-            
+
+<head>
+  <meta charset="UTF-8">
+  <title>Banner Generator</title>
+  <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+  <script>
+    // custom JS/jquery
+    $(function() {
+      $("button").click(function() {
+        var quote = $("#quote").val();
+        var color = $("input[name=color]:checked").val();
+        var bgColor = $("#color").val();
+        $("h1").val(quote).html(quote).css({
+          "color": color,
+          "background": bgColor,
         });
-    </script>
-  </head>
-  <body>
-    Your Quote: <input type="text" id="quote"><br>
-    <input type="radio" name="color" value="blue" checked> Blue<br>
+        if ($('#quotePls').is(":checked")) {
+          var quotes = ["Live for yourself", "Work hard. Dream big.", "Life is a one time offer, use it well", "The trouble is you think you have time", "Be the change you wish to see in the world", "Life is ten percent what happens to you and ninety percent how you respond to it","Youth is counted sweetest by those who are no longer young","What a wonderful life I’ve had! I only wish I’d realized it sooner","This is your life, and it’s ending one minute at a time","Love the life you live, and live the life you love","A man is not old until his regrets take the place of his dreams","Try and fail, but never fail to try","To succeed in life, you need two things: ignorance and confidence","The only true wisdom is in knowing you know nothing","To admit you were wrong is to declare you are wiser now than you were before"];
+          var randomNumber = Math.floor(Math.random() * quotes.length);
+          $("h1").html(quotes[randomNumber]);
+        }
+      });
+    });
+  </script>
+  <style>
+    h1 {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  Your Quote: <input type="text" id="quote"><br> What color do you want the text?<br>
+  <input type="radio" name="color" value="blue" checked> Blue<br>
   <input type="radio" name="color" value="red"> Red<br>
-  <input type="radio" name="color" value="Green"> Green<br>
+  <input type="radio" name="color" value="green"> Green<br> 
+  <input type="radio" name="color" value="black"> Black<br>
+  <input type="radio" name="color" value="white"> White<br>
+  What color would you like the background?
+  <input type="color" id="color"><br> Would you Like a Random Quote?
+  <input type="checkbox" id="quotePls">
   <button type="button">Submit</button>
-  
-      <h1></h1>
-  
-  </body>
+
+  <h1></h1>
+
+</body>
+
 </html>
